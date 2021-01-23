@@ -12,7 +12,7 @@ require_once("telegram_bot_api.php");
 
 class TelegramBot{
 
-	protected $token = null; 
+	protected $token = null;
 	protected $bot_name = null;
 	public    $api = null;
 	protected $result = null;
@@ -60,7 +60,7 @@ class TelegramBot{
 			}
 		}
 		else{
-			echo "I'm a telegram bot";
+			echo "I'm a telegram bot 1";
 			exit;
 		}
 	}
@@ -100,7 +100,7 @@ class TelegramBot{
 
 	/**
 	 * Calls callback of inline keyboard press
-	 * 
+	 *
 	 */
 	public function callCallback(){
 		$query = explode(" ", $this->result['callback_query']['data'] );
@@ -115,13 +115,13 @@ class TelegramBot{
 
 	/**
 	 * Sending message to list of users
-	 * 
+	 *
 	 * @param string $message Text message
 	 * @param array $userIdList Array of users id
 	 * @param array $params (Optional) Array of parameters to pas to telegram api
-	 * 
+	 *
 	 * @return boolean|array Returns false if all messages are sent or array of users id who didn`t get the message
-	 * 
+	 *
 	 * @link https://core.telegram.org/bots/api#sendmessage
 	 */
 	function mailing( $message, $userIdList, $params = null ){
@@ -159,7 +159,7 @@ class TelegramBot{
 	 *
 	 */
 	function cmd_help(){
-		
+
 		$this->api->sendMessage([
 			'text' => "Available commands:\n " . implode("\n ", array_keys( $this->commands ) ) . "",
 			'parse_mode'=> 'HTML'
