@@ -41,7 +41,7 @@ class TestBot extends TelegramBot{
 			"Музыка" => "cmd_music",
 			"Подкаст" => "cmd_podcast",
     "Инлайн" => "cmd_inlinemenu",
-    "set" => "cmd_inlinemenu"
+    "set" => "cmd_set"
 		];
 
 	/**
