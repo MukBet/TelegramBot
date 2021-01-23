@@ -203,7 +203,7 @@ class TestBot extends TelegramBot{
   }
   function cmd_set(){
     file_put_contents('data.txt', json_encode($this->result), FILE_APPEND | LOCK_EX);
-    $this->api->sendMessage( "ку, @" . $this->result["message"]["from"]["username"] . "." );
+    $this->api->sendMessage( "ку, @" . $this->result["message"]["from"]["username"] . "." .file_get_contents('data.txt') );
 
   }
 
