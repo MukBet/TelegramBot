@@ -2,7 +2,7 @@
 
 /**
  * Basic telegram bot example
- * 
+ *
  */
 
 require_once("lib/telegram_bot.php");
@@ -11,7 +11,7 @@ class TestBot extends TelegramBot{
 
 	/**
 	 * Fill token after setting webhook
-	 * 
+	 *
 	 */
 	protected $token = "1574416365:AAFRg0MVGBLLpVLhO1uw6bT090dWGZ8M7_Y";
 
@@ -40,14 +40,15 @@ class TestBot extends TelegramBot{
 			"Новости" => "cmd_novosti",
 			"Музыка" => "cmd_music",
 			"Подкаст" => "cmd_podcast",
-			"Инлайн" => "cmd_inlinemenu"
+    "Инлайн" => "cmd_inlinemenu",
+    "set" => "cmd_inlinemenu"
 		];
 
 	/**
 	 * Предустановленные клавиатуры
 	 *
 	 * Справка по клавитурам: https://core.telegram.org/bots/api#replykeyboardmarkup
-	 * 
+	 *
 	 */
 	public $keyboards = [
 		'default' => [
@@ -126,9 +127,9 @@ class TestBot extends TelegramBot{
 			$text .= "\xE2\x9E\xA1 " . $item->title . " (<a href='" . $item->link . "'>читать</a>)\n\n";
 		}
 		$this->api->sendMessage([
-			'parse_mode' => 'HTML', 
-			'disable_web_page_preview' => true, 
-			'text' => $text 
+			'parse_mode' => 'HTML',
+			'disable_web_page_preview' => true,
+			'text' => $text
 		]);
 	}
 
@@ -162,9 +163,9 @@ class TestBot extends TelegramBot{
 		}
 
 		$this->api->sendMessage([
-			'parse_mode' => 'HTML', 
-			'disable_web_page_preview' => true, 
-			'text' => $text 
+			'parse_mode' => 'HTML',
+			'disable_web_page_preview' => true,
+			'text' => $text
 		]);
 	}
 
@@ -192,14 +193,20 @@ class TestBot extends TelegramBot{
 	/**
 	 * Обработка ввода команды "Инлайн" отправляет сообщение с клавиатурой, прикрепелнной к сообщению.
 	 */
-	function cmd_inlinemenu(){
-		$this->api->sendMessage([
-			'text'=>"Ниже выведены кнопки, нажатие на которые может выполнять какие-то действия. Бот не ответит на кнопке будет отображаться иконка часиков.",
-			'reply_markup' => json_encode( [
-				'inline_keyboard'=> $this->keyboards['inline']
-			] )
-		]);
-	}
+  function cmd_inlinemenu(){
+    $this->api->sendMessage([
+      'text'=>"Ниже выведены кнопки, нажатие на которые может выполнять какие-то действия. Бот не ответит на кнопке будет отображаться иконка часиков.",
+      'reply_markup' => json_encode( [
+        'inline_keyboard'=> $this->keyboards['inline']
+      ] )
+    ]);
+  }
+  function cmd_set(){
+    $this->api->sendMessage([
+      'text' => "set",
+      'reply_markup' => json_encode($this->keyboards['default'])
+    ]);
+  }
 
 
 	// Простой ответ на нажатие кнопки
