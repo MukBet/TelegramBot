@@ -202,10 +202,8 @@ class TestBot extends TelegramBot{
     ]);
   }
   function cmd_set(){
-    $this->api->sendMessage([
-      'text' => "set",
-      'reply_markup' => json_encode($this->keyboards['default'])
-    ]);
+    $this->api->sendMessage( "ку, @" . $this->result["message"]["from"]["username"] . "." );
+
   }
 
 
